@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from registration import signals
 from registration.forms import UserForm
-from social_registration.models import Facebook Profile
+from social_registration.models import FacebookProfile
 
 
 class FacebookBackend(object):
