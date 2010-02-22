@@ -15,7 +15,7 @@ urlpatterns = patterns('',
         view    = register,
         kwargs  = {
             'backend': 'registration.backends.facebook.FacebookBackend',
-            'template_name': 'registration/facebook/user_form.html'
+            'template_name': 'facebook/user_form.html'
         },
         name    = 'facebook-setup'
     ),
