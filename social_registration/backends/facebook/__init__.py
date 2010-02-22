@@ -1,13 +1,10 @@
 from django.conf import settings
-from django.db.models import get_model
+from django.contrib.auth.models import User
 
 from registration import signals
 from registration.forms import UserForm
+from social_registration.models import Facebook Profile
 
-
-FacebookProfile = get_model('accounts', 'facebookprofile')
-Profile = get_model('members', 'profile')
-User = get_model('auth', 'user')
 
 class FacebookBackend(object):
     """
@@ -35,8 +32,6 @@ class FacebookBackend(object):
         new_user = User.objects.create_user(username, email)
         new_user.password = User.objects.set_unusable_password()
         new_user.save()
-
-        new_profile = Profile.objects.create(user=new_user)
 
         new_facebook_profile = FacebookProfile.objects.create(
             user=new_user,
