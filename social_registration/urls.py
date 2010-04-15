@@ -29,11 +29,7 @@ urlpatterns = patterns('',
     url(r'^twitter/unauthorize/$',
         view    = 'social_registration.views.twitter_unauthorization',
         name    = 'twitter-unauthorization'
-    ),
-    url(r'^twitter/callback/$',
-        view    = 'social_registration.views.twitter_callback',
-        name    = 'twitter-callback'
-    ),
+    )
 
 )
 
