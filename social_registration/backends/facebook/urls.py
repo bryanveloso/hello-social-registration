@@ -4,15 +4,12 @@ registration backend.
 
 """
 from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template
-
-from registration.views import activate, register
 
 
 urlpatterns = patterns('',
 
     url(r'^facebook/setup/$',
-        view    = register,
+        view    = 'registration.views.register',
         kwargs  = {
             'backend': 'registration.backends.facebook.FacebookBackend',
             'template_name': 'facebook/user_form.html'
@@ -20,14 +17,14 @@ urlpatterns = patterns('',
         name    = 'facebook-setup'
     ),
     url(r'^facebook/complete/$',
-        view    = direct_to_template,
+        view    = 'django.views.generic.simple.direct_to_template',
         kwargs  = {
             'template': 'registration/registration_complete.html'
         },
         name    = 'facebook-registration-complete'
     ),
     url(r'^facebook/closed/$',
-        view    = direct_to_template,
+        view    = 'django.views.generic.simple.direct_to_template',
         kwargs  = {
             'template': 'registration/registration_closed.html'
         },
@@ -35,4 +32,32 @@ urlpatterns = patterns('',
     )
 
 )
+
+
+urlpatterns = patterns('',
+
+    url(r'^facebook/prepare/$',
+        view    = 'accounts.views.prepare',
+        kwargs  = {
+            'backend': 'accounts.backends.facebook.FacebookBackend',
+        },
+        name    = 'facebook-prepare'
+    ),
+    url(r'^facebook/authenticate/$',
+        view    = 'accounts.views.authenticate',
+        kwargs  = {
+            'backend': 'accounts.backends.facebook.FacebookBackend',
+        },
+        name    = 'facebook-authentication'
+    ),
+    url(r'^facebook/deauthenticate/$',
+        view    = 'accounts.views.deauthenticate',
+        kwargs  = {
+            'backend': 'accounts.backends.facebook.FacebookBackend',
+        },
+        name    = 'facebook-deauthentication'
+    )
+
+)
+
 
