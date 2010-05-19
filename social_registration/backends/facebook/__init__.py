@@ -10,10 +10,10 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 
-from social_registration.backends.default import AccountBackend as DefaultBackend
-from social_registration.models import Association
 from registration import signals
 from registration.forms import UserForm
+from social_registration.backends.default import AccountBackend as DefaultBackend
+from social_registration.models import Association
 
 
 class AuthenticationBackend(ModelBackend):
